@@ -1,11 +1,29 @@
-
 pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello from Jenkins'
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building project...'
+                bat 'mvn clean install' // Use 'sh' if you're on Linux
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying app...'
             }
         }
     }
