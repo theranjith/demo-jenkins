@@ -1,23 +1,11 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Built'){
-            steps{
-                Bat "Built phase"
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello from Jenkins'
             }
         }
-
-        stage('Test'){
-            steps{
-                Bat "Test phase"
-            }
-        }
-
-        stage('Deploy'){
-            steps{
-                 Bat "Deploy phase"
-            }
-        }
-
     }
 }
