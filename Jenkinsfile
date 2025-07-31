@@ -1,30 +1,23 @@
-pipeline {
+pipeline{
     agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
+    stages{
+        stage('Built'){
+            steps{
+                Bat "Built phase"
             }
         }
 
-        stage('Build') {
-            steps {
-                echo 'Building project...'
-                bat 'mvn clean install' // Use 'sh' if you're on Linux
+        stage('Test'){
+            steps{
+                Bat "Test phase"
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
+        stage('Deploy'){
+            steps{
+                 Bat "Deploy phase"
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying app...'
-            }
-        }
     }
 }
